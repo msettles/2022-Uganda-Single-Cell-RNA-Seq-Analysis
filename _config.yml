@@ -17,11 +17,7 @@ navigation:
   #  url: https://raw.githubusercontent.com/msettles/msettles.presentations/master/singlecell/scRNAseq-expDesign_March_2022.pdf
 
   - heading: Support
-  - title: Slack
-    url: base/slack
-  - title: Zoom
-    url: base/zoom
-  - title: Cheat Sheets
+=  - title: Cheat Sheets
     url: base/cheatSheetIndex
   - title: Software and Links
     url: software_scripts/software
@@ -30,7 +26,7 @@ navigation:
 
   - heading: Prerequisites, R
   - title: R
-    url: base/r_prerequisites
+    url: https://ucdavis-bioinformatics-training.github.io/2022-April-Introduction-to-R-for-Bioinformatics/
 
   - heading: scRNAseq Analysis
   - title: Prepare scRNAseq Analysis
@@ -56,7 +52,7 @@ navigation:
 
   - heading: Prerequisites, CLI
   - title: CLI
-    url: base/cli_prerequisites
+    url: https://ucdavis-bioinformatics-training.github.io/2022-April-Introduction-to-the-Command-Line-for-Bioinformatics/
 
   - heading: Data Reduction
   - title: Files and Filetypes
