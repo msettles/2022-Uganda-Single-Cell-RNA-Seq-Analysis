@@ -1,39 +1,24 @@
-## Schedule
+## Daily task list and todos
 
-All posted times are **Pacific** time zone. At least one break will be provided each morning and afternoon.
+The materials are still evolving, while you can continue on ahead, you may need to backtrack and redo some materials as I may have changed them.
 
 ### Monday, July 18
 
-|:----------- |:------------------- |
-|**8:50 am**  | Zoom session starts |
-|**9:00 am**  | Introductions |
-|**9:30 am**  | DNATech Core Talk (Hong Qiu) |
-|**10:00 am**  | Intro 2 Command Line |
-|**11:30 am**  | 10x Genomics Sponsor Talk |
-|**12:00 am**  | Lunch |
-|**1:00 pm**  | Using the Cluster |
-|**1:45 pm**  | Project Setup |
-|**2:15 pm**  | Creating an Expression Matrix |
-|**4:30 pm** | Zoom session ends |
+Monday's goal is introductions, setup and prerequisites
+
+1. Introduce yourselves and to the instructors.
+1. Post an introduction of yourself onto the [Discussion Page](https://github.com/msettles/2022-Uganda-S.ngle-Cell-RNA-Seq-Analysis/discussions).
+1. Read over the [welcome](./welcome) page (Very Short).
+1. If needed install the **most** current versions of R **AND** RStudio.
+1. Review the [UCD Intro to R course](https://ucdavis-bioinformatics-training.github.io/2022-April-Introduction-to-R-for-Bioinformatics/).
+  - this course is a full 3-day course, however the intent here is to review the materials and not do everything.
+  - I assume you all have experience and if anything just need a refresher.
+1. Finally, install R packages and retrieve the data for data analysis.
 
 ### Tuesday, July 19
 
-|:----------- |:------------------- |
-|**8:50 am**  | Zoom session starts |
-|**9:00 am**  | Intro 2 R |
-|**11:00 am**  | Installing R Packages |
-|**11:30 am**  | PerkinElmer Sponsor Talk |
-|**12:00 pm**  | Lunch |
-|**1:00 pm**  | Data setup |
-|**1:30 pm**   | Data Analysis Parts 1 - 2  |
-|**4:30 pm** | Zoom session ends |
-
 ### Wednesday, July 20
 
-|:----------- |:------------------- |
-|**8:50 am**  | Zoom session starts |
-|**9:00 am**   | Data Analysis Parts 3 - 4  |
-|**11:30 am**  | Parse BioSciences Sponsor Talk |
-|**12:00 pm**  | Lunch |
-|**1:00 pm**   | Data Analysis Parts 5 - 7  |
-|**4:30 pm** | Zoom session ends |
+### Wednesday, July 21
+
+### Wednesday, July 22
