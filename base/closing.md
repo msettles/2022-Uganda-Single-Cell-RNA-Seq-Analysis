@@ -2,15 +2,7 @@
 
 **The forest through the trees.**
 
-<img src="https://raw.githubusercontent.com/msettles/msettles.presentations/master/flowcharts/flowchart2.png" alt="flowchart2" width="600px"/>
-
-## Be Consistent
-
-* Be Consistent
-* Be Consistent
-* Be Consistent
-* Be Consistent
-* Be Consistent
+<img src="../data_reduction/figures/flowchart2.png" alt="flowchart2" width="600px"/>
 
 ## Prerequisites for bioinformatics
 
@@ -28,18 +20,4 @@
 
 ## Next Steps
 
-My recommendation is to follow all of the instructions again, from the beginning on your own and send emails to [training.bioinformatics@ucdavis.edu](mailto:training.bioinformatics@ucdavis.edu) And we will be responsive to answering questions
-
-##  Upcoming Workshops
-
-Continue pursuing single cell RNA-Seq analysis with one of our advanced topics single-day workshops, or explore another type of experiment with one of our other [offerings](https://registration.genomecenter.ucdavis.edu).
-
-## Previous Workshops available online
-If you would like to take a look at the [documentation](https://msettles.github.io/) from previous workshops.
-
-
-## Questions?
-
-Contact us at [training.bioinformatics@ucdavis.edu](mailto:training.bioinformatics@ucdavis.edu)
-
-If you receive email directly from [training.bioinformatics@ucdavis.edu](mailto:training.bioinformatics@ucdavis.edu), you are currently subscribed to one of our announcements lists. To subscribe / unsubscribe from the Bioinformatics Core email lists, please follow the instructions at the bottom of [http://bioinformatics.ucdavis.edu/contact-us/](http://bioinformatics.ucdavis.edu/contact-us/).
+My recommendation is to follow all of the instructions **again**, from the beginning on your own. Then again if needed, this time making changes and edits to the code to better understand things.
