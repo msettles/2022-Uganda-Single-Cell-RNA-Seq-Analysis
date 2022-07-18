@@ -11,10 +11,6 @@ navigation:
     url: base/welcome
   - title: Daily Tasks
     url: base/schedule
-  #- title: What is Bioinformatics/Genomics?
-  #  url: https://raw.githubusercontent.com/msettles/msettles.presentations/master/genomics/Genomics_a_perspective_Dec_2021.pdf
-  #- title: Experimental Design and Cost Estimation
-  #  url: https://raw.githubusercontent.com/msettles/msettles.presentations/master/singlecell/scRNAseq-expDesign_March_2022.pdf
 
   - heading: Support
   - title: Cheat Sheets
