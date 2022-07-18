@@ -17,7 +17,7 @@ navigation:
   #  url: https://raw.githubusercontent.com/msettles/msettles.presentations/master/singlecell/scRNAseq-expDesign_March_2022.pdf
 
   - heading: Support
-=  - title: Cheat Sheets
+  - title: Cheat Sheets
     url: base/cheatSheetIndex
   - title: Software and Links
     url: software_scripts/software
