@@ -4,11 +4,13 @@ Open RStudio and create a new project, for more info see [Using-Projects](https:
 
 *File > New Project > New Directory > New Project*
 
-Name the new directory (e.g. Differential_Expression), and check "use renv with this project" if present.
+Name the new directory (e.g. single_cell_makerere), and check "use renv with this project" if present.
 
-Learn more about [renv](https://rstudio.github.io/renv/articles/renv.html).
+Run the following commands to set some options and make sure the packages we need for this workshop are installed and if not install them. We attempt to load them all at the end, please verify they all loaded correctly.
 
-Run the following commands to set some options and make sure the packages Seurat, sva, ggplot2, dplyr, limma, and topGO are installed (if not install it), and then load them and verify they all loaded correctly.
+Some of the packages below require a working installation of gfortran, on an Apple Mac this could be an issue, look at this [page for Mac OSX](https://mac.r-project.org/tools/) for additional help.
+
+**SUGGESTION** Do not copy past them all, some require input, so install/check them 1 at a time.
 
 **In the R console** run the following commands:
 ```r
@@ -76,6 +78,10 @@ if (!any(rownames(installed.packages()) == "scran")){
   BiocManager::install("scran")
 }
 
+if (!any(rownames(installed.packages()) == "remotes")){
+  BiocManager::install("remotes")
+}
+
 if (!any(rownames(installed.packages()) == "DoubletFinder")){
   remotes::install_github('chris-mcginnis-ucsf/DoubletFinder')
 }
@@ -110,7 +116,7 @@ download.file("https://raw.githubusercontent.com/msettles/2022-Uganda-Single-Cel
 
 ### Download the data for the workshop, extract it.
 
-In the R console run the following command to download and extract the dataset (Little over 160MB file).
+In the R console run the following command to download and extract the dataset (approximately 160MB file).
 
 ```r
 options(timeout=3000)
@@ -118,13 +124,10 @@ download.file("https://bioshare.bioinformatics.ucdavis.edu/bioshare/download/feb
 system("unzip expression_data_cellranger.zip") # works in Linux and Mac, not sure about Windows"
 ```
 
-**This way of downloading the file might be very slow (could take > 1hr). So, the recommended way to download the file is to use scp on Mac/Windows Powershell, or Filezilla/WinSCP on Windows.**
+**This way of downloading the file might be very slow (could take > 1hr) and produce issues. Another way to download the file directly from the [web](https://bioshare.bioinformatics.ucdavis.edu/bioshare/view/feb28v7lew62um4/).**
 
-```bash
-scp username@tadpole.genomecenter.ucdavis.edu:/share/workshop/scRNA_workshop/cellranger.outs/expression_data_cellranger.zip ./
-```
 
-If the system command didn't work to extract the zip file, navigate to the folder you downloaded the data in and manually unzip the archive file.
+If the system command didn't work to extract the zip file, navigate to the RStudio project folder you downloaded the data in and manually unzip the archive file.
 
 ### Edit the file YAML portion
 
@@ -145,4 +148,4 @@ Your RStudio should look something like this
 <img src="figures/RStudio.png" alt="RStudio" width="80%"/>
 
 
-Now spend a few minutes navigating through our data. How may samples are there? Find the hdf5 file and the matrix files. View the HTML files and let's discuss.
+Now spend a few minutes navigating through our data. How may samples are there? Find the hdf5 file and the matrix files. View the HTML files and discuss.
