@@ -7,7 +7,7 @@ navigation:
     url: /
 
   - heading: Introduction and Lectures
-  - title: Intro to the Workshop and Core
+  - title: Intro to the Workshop
     url: base/welcome
   - title: Daily Tasks
     url: base/schedule

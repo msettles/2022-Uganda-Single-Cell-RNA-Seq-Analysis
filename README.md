@@ -4,7 +4,7 @@ All documentation for the workshop is best viewed from the github.io pages
 
 Single Cell RNA-Seq Analysis
 
-Jul.18, 2022 - Jul. 21, 2022 Remotely exclusive to Makerere University Kampala Uganda.
+Jul.25, 2022 - Jul. 29, 2022 Remotely exclusive to Makerere University Kampala Uganda.
 
 Contact - Dr. Matthew Settles
 

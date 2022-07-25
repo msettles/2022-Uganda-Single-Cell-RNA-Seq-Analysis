@@ -6,6 +6,8 @@ The materials are still evolving, while you can continue on ahead, you may need 
 
 Monday's goal is introductions, setup and prerequisites
 
+My intro Day 1 [YouTube Video](https://youtu.be/FSN4NEuw_Ug)
+
 1. Introduce yourselves to each other and to the instructors.
 1. Post an introduction of yourself onto the [Discussion Page](https://github.com/msettles/2022-Uganda-S.ngle-Cell-RNA-Seq-Analysis/discussions).
 1. Read over the [welcome](./welcome) page (Very Short).
