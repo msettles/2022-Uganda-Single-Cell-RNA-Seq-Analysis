@@ -20,6 +20,22 @@ My intro Day 1 [YouTube Video](https://youtu.be/FSN4NEuw_Ug)
 
 ### Tuesday, July 19
 
+The idea today is to get to know a little the raw data folder and then run the first 3 parts of the R analysis
+
+1. Make sure everything from Monday is completed
+1. Look at the raw data folder and its contents
+
+My Part 1 [Youtube Video](https://youtu.be/sKUWyykQ8mc)
+1. Complete  scRNA Workshop Part 1 RMD file.
+
+My Part 2 [Youtube Video](https://youtu.be/2QmPT9sFSiM)
+1. Complete  scRNA Workshop Part 2 RMD file.
+
+My Part 3 [Youtube Video](https://youtu.be/Jeb3JQyAx8Y)
+1. Complete  scRNA Workshop Part 3 RMD file.
+
+1. Compare what you did today with how things were done in the paper, what can you point out that differs, write these comments in the github discussion page.
+
 ### Wednesday, July 20
 
 ### Wednesday, July 21
