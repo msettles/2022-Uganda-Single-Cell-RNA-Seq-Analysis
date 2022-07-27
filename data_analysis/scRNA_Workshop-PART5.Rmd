@@ -12,6 +12,10 @@ Last Updated: July 15, 2022
 
 ## Load libraries
 ```{r load_libraries, warning=FALSE,error=FALSE,message=FALSE}
+# we need 1 more package we didn't install earlier
+if (!requireNamespace("ape", quietly = TRUE)){
+    install.packages("ape")
+}
 library(Seurat)
 library(ggplot2)
 library(dplyr)
@@ -34,9 +38,9 @@ use.pcs = 1:25
 
 ## Identifying clusters
 
-Seurat implements an graph-based clustering approach. Distances between the cells are calculated based on previously identified PCs. 
+Seurat implements an graph-based clustering approach. Distances between the cells are calculated based on previously identified PCs.
 
-The default method for identifying k-nearest neighbors has been changed in V4 to [annoy](https://github.com/spotify/annoy) ("Approximate Nearest Neighbors Oh Yeah!). This is an approximate nearest-neighbor approach that is widely used for high-dimensional analysis in many fields, including single-cell analysis. Extensive community benchmarking has shown that annoy substantially improves the speed and memory requirements of neighbor discovery, with negligible impact to downstream results. 
+The default method for identifying k-nearest neighbors has been changed in V4 to [annoy](https://github.com/spotify/annoy) ("Approximate Nearest Neighbors Oh Yeah!). This is an approximate nearest-neighbor approach that is widely used for high-dimensional analysis in many fields, including single-cell analysis. Extensive community benchmarking has shown that annoy substantially improves the speed and memory requirements of neighbor discovery, with negligible impact to downstream results.
 
 
 
@@ -396,11 +400,11 @@ experiment.merged$samplecluster = paste(experiment.merged$orig.ident,experiment.
 # set the identity to the new variable
 Idents(experiment.merged) <- "samplecluster"
 
-markers.comp <- FindMarkers(experiment.merged, ident.1 = c("A001-C-007_12", "A001-C-104_12"), ident.2= "B001-A-301_12")
+markers.comp <- FindMarkers(experiment.merged, ident.1 = c("A001-C-007_18", "A001-C-104_18"), ident.2= "B001-A-301_18")
 
 head(markers.comp)
 
-experiment.subset <- subset(experiment.merged, samplecluster %in%  c( "A001-C-007_12", "A001-C-104_12", "B001-A-301_12" ))
+experiment.subset <- subset(experiment.merged, samplecluster %in%  c( "A001-C-007_18", "A001-C-104_18", "B001-A-301_18" ))
 DoHeatmap(object = experiment.subset, features = head(rownames(markers.comp),20))
 ```
 
