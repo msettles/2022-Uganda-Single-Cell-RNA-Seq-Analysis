@@ -37,6 +37,15 @@ My Part 3 [Youtube Video](https://youtu.be/Jeb3JQyAx8Y)
 1. Compare what you did today with how things were done in the paper, what can you point out that differs, write these comments in the github discussion page.
 
 ### Wednesday, July 20
+1. Make sure everything from Tuesday is completed
+1. Review the Parts 1 through 3
+
+My Part 4 [Youtube Video](https://youtu.be/7XBqbbM2VJk)
+1. Complete  scRNA Workshop Part 3 RMD file.
+
+My Part 5 [)
+1. Complete  scRNA Workshop Part 5 RMD file.
+
 
 ### Wednesday, July 21
 
