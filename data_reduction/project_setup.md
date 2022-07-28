@@ -137,19 +137,19 @@ zless A001-C-007_S4_R2_001.fastq.gz
 Detailed explanation of FASTQ file is [here](filetypes.md). Please read on the description and make sure you can identify which lines correspond to a single read and which lines are the header, sequence, and quality values. Press 'q' to exit this screen. Then, let's figure out the number of reads in this file. A simple way to do that is to count the number of lines and divide by 4 (because the record of each read uses 4 lines). In order to do this use cat to output the uncompressed file and pipe that to "wc" to count the number of lines:
 
 ```bash
-zcat A001-C-007_S4_I1_001.fastq.gz | wc -l
+gunzip -c A001-C-007_S4_I1_001.fastq.gz | wc -l
 ```
 
 Divide this number by 4 and you have the number of reads in this file. One more thing to try is to figure out the length of the reads without counting each nucleotide. First get the first 4 lines of the file (i.e. the first record):
 
 ```bash
-zcat A001-C-007_S4_I1_001.fastq.gz  | head -4
+gunzip -c A001-C-007_S4_I1_001.fastq.gz  | head -4
 ```
 
 Note the header lines (1st and 3rd line) and sequence and quality lines (2nd and 4th) in each 4-line fastq block. You can isolate the sequence line:
 
 ```bash
-zcat A001-C-007_S4_I1_001.fastq.gz | head -2 | tail -1
+gunzip -c A001-C-007_S4_I1_001.fastq.gz | head -2 | tail -1
 ```
 
 Then, copy and paste the DNA sequence line into the following command (replace [sequence] with the line):
@@ -163,7 +163,7 @@ This will give you the length of the read.
 Also can do the bash one liner:
 
 ```bash
-echo -n $(zcat A001-C-007_S4_I1_001.fastq.gz  | head -2 | tail -1) | wc -c
+echo -n $(gunzip -c A001-C-007_S4_I1_001.fastq.gz  | head -2 | tail -1) | wc -c
 ```
 
 See if you can figure out how this command works.
