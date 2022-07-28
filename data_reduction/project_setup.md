@@ -86,7 +86,7 @@ Let's set up a project directory for the analysis, and talk a bit about project 
 
 ```bash
 cd
-mkdir -p /share/workshop/scRNA_workshop/$USER/scrnaseq_example
+mkdir -p ~/scrnaseq_example
 ```
 
 ---
@@ -94,18 +94,19 @@ mkdir -p /share/workshop/scRNA_workshop/$USER/scrnaseq_example
 **2a\.** Next, go into that directory, create a raw data directory (we are going to call this 00-RawData) and cd into that directory. Let's then create symbolic links to the fastq files that contains the raw read data.
 
 ```bash
-cd /share/workshop/scRNA_workshop/$USER/scrnaseq_example
+cd ~/scrnaseq_example
 mkdir 00-RawData
 cd 00-RawData/
-ln -s /share/workshop/scRNA_workshop/Data/*.fastq.gz .
 ```
+
+Download the [Raw Data](https://bioshare.bioinformatics.ucdavis.edu/bioshare/download/feb28v7lew62um4/Data_fastqfiles.zip.gz) and extract into the 00-RawData folder, there should be 6 files, I1/R1/R2 each for 3 samples (A001-C-007, A001-C-104, B001-A-301).
 
 This directory now contains the reads for each "sample" (in this case just 1).
 
 **2b\.** Let's create a sample sheet for the project, and store sample names in a file called samples.txt
 
 ```bash
-cd /share/workshop/scRNA_workshop/$USER/scrnaseq_example/00-RawData
+cd ~/scrnaseq_example/00-RawData
 ls *_R1_* |cut -d'_' -f1 - > ../samples.txt
 cat ../samples.txt
 ```
@@ -114,7 +115,7 @@ cat ../samples.txt
 **3\.** Now, take a look at the raw data directory.
 
 ```bash
-ls /share/workshop/scRNA_workshop/$USER/scrnaseq_example/00-RawData
+ls ~/scrnaseq_example/00-RawData
 ```
 ---
 

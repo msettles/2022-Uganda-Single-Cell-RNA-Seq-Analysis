@@ -36,7 +36,7 @@ module load cellranger/7.0.0
 ## c) or if they are already on the path, do nothing
 
 ## Set the parameters for the run
-basedir="/share/workshop/scRNA_workshop/$USER/scrnaseq_example"
+basedir="~/scrnaseq_example"
 transcriptome=/share/workshop/scRNA_workshop/software/refdata-gex-GRCh38-2020-A
 fastqs="${basedir}/00-RawData"
 

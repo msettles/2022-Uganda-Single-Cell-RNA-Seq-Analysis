@@ -6,6 +6,8 @@ output:
       keep_md: TRUE
 ---
 
+Last Updated: July 27, 2022
+
 # Part 6: Enrichment, Model-Based DE, and Cell-Type Identification
 
 ```{r setup_opt, warning=FALSE,error=FALSE,message=FALSE, echo = F}
@@ -14,10 +16,21 @@ options(width = 450)
 
 ## Load libraries
 ```{r load_library, warning=FALSE,error=FALSE,message=FALSE}
+# we need 1 more package we didn't install earlier
+# we need 1 more package we didn't install earlier
+if (!requireNamespace("devtools", quietly = TRUE)){
+    install.packages("devtools")
+}
+if (!any(rownames(installed.packages()) == "scMRMA")){
+  devtools::install_github("JiaLiVUMC/scMRMA")
+}
+
 library(Seurat)
 library(ggplot2)
 library(limma)
 library(topGO)
+suppressPackageStartupMessages(library(scMRMA))
+
 ```
 
 ## Load the Seurat object
@@ -28,7 +41,7 @@ Idents(experiment.merged) <- "finalcluster"
 ```
 
 # 1. Gene Ontology (GO) Enrichment of Genes Expressed in a Cluster
-[Gene Ontology](http://geneontology.org/docs/ontology-documentation/) provides a controlled vocabulary for describing gene products.  Here we use enrichment analysis to identify GO terms that are overrepresented among the gene expressed in cells in a given cluster. 
+[Gene Ontology](http://geneontology.org/docs/ontology-documentation/) provides a controlled vocabulary for describing gene products.  Here we use enrichment analysis to identify GO terms that are overrepresented among the gene expressed in cells in a given cluster.
 
 ```{r GO, warning=FALSE,error=FALSE,message=FALSE}
 cluster12 <- subset(experiment.merged, idents = '12')
@@ -97,25 +110,18 @@ head(out, 30)
 * t: logFC divided by its standard error
 * P.Value: Raw p-value (based on t) from test that logFC differs from 0
 * adj.P.Val: Benjamini-Hochberg false discovery rate adjusted p-value
-* B: log-odds that gene is DE 
+* B: log-odds that gene is DE
 
 
 
 # BONUS: Cell type identification with scMRMA
 [scMRMA]([https://academic.oup.com/nar/article/50/2/e7/6396893]) (single cell Multi-Resolution Marker-based Annotation Algorithm) classifies cells by iteratively clustering them then annotating based on a hierarchical external database.
 
-The databases included with the current version are only for use with human and mouse, but a user-constructed hierarchichal database can be used. 
+The databases included with the current version are only for use with human and mouse, but a user-constructed hierarchichal database can be used.
 
 The package can be installed from [Github](https://github.com/JiaLiVUMC/scMRMA):
 
-```{r}
-# Remove hashes to run
-# install.packages("devtools")
-# devtools::install_github("JiaLiVUMC/scMRMA")
-```
-
 ```{r, warning = FALSE}
-suppressPackageStartupMessages(library(scMRMA))
 result <- scMRMA(input = experiment.merged,
                  species = "Hs",
                  db = "panglaodb")
@@ -133,7 +139,7 @@ DimPlot(experiment.merged, group.by = "CellType", label = TRUE)
 download.file("https://raw.githubusercontent.com/msettles/2022-Uganda-Single-Cell-RNA-Seq-Analysis/main/data_analysis/scRNA_Workshop-PART7.Rmd", "scRNA_Workshop-PART7.Rmd")
 ```
 
-                 
+
 ## Session Information
 ```{r session_info, warning=FALSE,error=FALSE,message=FALSE}
 sessionInfo()

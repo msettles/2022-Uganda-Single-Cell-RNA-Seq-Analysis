@@ -335,7 +335,7 @@ Cell Ranger does produce a more readable HTML report with the same statistics an
 1. Log into tadpole with the username/password
 
     ```bash
-    cd /share/workshop/scRNA_workshop/$USER/scrnaseq_example
+    cd ~/scrnaseq_example
     ```
 
 2. Load and review cellranger's sub-applications and help docs
@@ -349,7 +349,7 @@ Cell Ranger does produce a more readable HTML report with the same statistics an
 4. Copy contents of the script to your **scrnaseq_example** folder and do a test run.
 
     ```bash
-    cd /share/workshop/scRNA_workshop/$USER/scrnaseq_example
+    cd ~/scrnaseq_example
     wget https://raw.githubusercontent.com/msettles/2022-Uganda-Single-Cell-RNA-Seq-Analysis/main/software_scripts/scripts/cellranger-counts.sh cellranger-counts.sh
     ```
 
@@ -363,7 +363,7 @@ Cell Ranger does produce a more readable HTML report with the same statistics an
 5. Link completed result folders to your scrnaseq_example folders.
 
     ```bash
-    cd /share/workshop/scRNA_workshop/$USER/scrnaseq_example
+    cd ~/scrnaseq_example
     ln -s /share/workshop/scRNA_workshop/cellranger.outs/A001-C-007 ./A001-C-007-copy
     ```
 
