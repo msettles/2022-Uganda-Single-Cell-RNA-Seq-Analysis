@@ -52,10 +52,9 @@ My Part 5 [Youtube Video](https://youtu.be/QPjrf4C1s4k)
 1. Make sure everything from Tuesday is completed
 1. Review the Parts 1 through 3
 
-My Part 6 [Youtube Video](https://youtu.be/7XBqbbM2VJk)
+Combined Part 6 and Part 7 [Youtube Video](https://youtu.be/CByXfECUpvE)
 1. Complete  scRNA Workshop Part 6 RMD file.
 
-My Part 7 [Youtube Video](https://youtu.be/QPjrf4C1s4k)
 1. Complete  scRNA Workshop Part 7 RMD file.
 
 
