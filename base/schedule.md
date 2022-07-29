@@ -47,7 +47,7 @@ My Part 5 [Youtube Video](https://youtu.be/QPjrf4C1s4k)
 1. Complete  scRNA Workshop Part 5 RMD file.
 
 
-### Wednesday, July 21
+### Tjursday, July 21
 
 1. Make sure everything from Tuesday is completed
 1. Review the Parts 1 through 3
@@ -58,4 +58,6 @@ Combined Part 6 and Part 7 [Youtube Video](https://youtu.be/CByXfECUpvE)
 1. Complete  scRNA Workshop Part 7 RMD file.
 
 
-### Wednesday, July 22
+### Friday, July 22
+
+Single Cell Raw Data Processing, 

@@ -330,7 +330,16 @@ Cell Ranger does produce a more readable HTML report with the same statistics an
 
 [Cell Ranger V6 web summary](web_summary.html)
 
-## Exercises
+## Exercises **LINUX ONLY**
+
+First you need to [download](https://support.10xgenomics.com/single-cell-gene-expression/software/downloads/latest?) and extract CellRanger and put onto the path the cellranger executable.
+
+as well as the human reference
+
+```
+curl -O https://cf.10xgenomics.com/supp/cell-exp/refdata-gex-GRCh38-2020-A.tar.gz
+```
+
 
 1. Log into tadpole with the username/password
 
@@ -338,36 +347,47 @@ Cell Ranger does produce a more readable HTML report with the same statistics an
     cd ~/scrnaseq_example
     ```
 
-2. Load and review cellranger's sub-applications and help docs
 
-    ```bash
-    module load cellranger/7.0.0
-    ```
-
-3. Review the [cellranger-counts.sh](https://raw.githubusercontent.com/msettles/2022-Uganda-Single-Cell-RNA-Seq-Analysis/main/software_scripts/scripts/cellranger-counts.sh) script used to map reads in the fastq files.
-
-4. Copy contents of the script to your **scrnaseq_example** folder and do a test run.
+1. Run Cellranger on each sample.
 
     ```bash
     cd ~/scrnaseq_example
-    wget https://raw.githubusercontent.com/msettles/2022-Uganda-Single-Cell-RNA-Seq-Analysis/main/software_scripts/scripts/cellranger-counts.sh cellranger-counts.sh
-    ```
 
-    update the email address in the script if you like.
-
-    ```bash
-    sbatch cellranger-counts.sh
-    ```
+		## Set the parameters for the run
+		basedir="~/scrnaseq_example"
+		transcriptome=[PATH TO]/refdata-gex-GRCh38-2020-A
+		fastqs="${basedir}/00-RawData"
 
 
-5. Link completed result folders to your scrnaseq_example folders.
+		## provide the script the row # of the sample to be run
+		sample=`sed "${SLURM_ARRAY_TASK_ID}q;d" samples.txt`
 
-    ```bash
-    cd ~/scrnaseq_example
-    ln -s /share/workshop/scRNA_workshop/cellranger.outs/A001-C-007 ./A001-C-007-copy
-    ```
+		## https://support.10xgenomics.com/single-cell-gene-expression/software/overview/welcome
+		## Create the call
+		call="cellranger count \
+		  --id="A001-C-007" \
+		  --sample="A001-C-007" \
+		  --transcriptome=${transcriptome} \
+		  --fastqs=${fastqs}"
 
-	1. In the folder A001-C-007-copy, which output folders/files were generated from this script?
+		## Some other parameters that may be usefull/needed
+		## --expect-cells=NUM, override auto-estimate of expected number of recovered cells
+		## --force-cells=NUM, force pipeline to use this number of cells, bypassing cell detection algorithm
+		## --include-introns=false         exclude intronic reads in count (new in cellranger v7.0)
+		## --nosecondary, skip the unnecessary secondary analysis
+		## --r2-length=NUM, if your R2 qualities are really poor
+		## --chemistry=CHEM, should it fail chemistry detection
+
+		## Echo the call
+		echo $call
+		## Evaluate the call
+		eval $call
+		```
+
+
+### Questions.
+
+	1. In the folder A001-C-007, which output folders/files were generated from this script?
 	2. Review the metrics_summary.csv file
 		1. What where the total number of reads in this sample?
 		2. Reads Mapped Confidently to transcriptome?
@@ -378,110 +398,4 @@ Cell Ranger does produce a more readable HTML report with the same statistics an
 	4. Transfer the html file to your computer
 	5. Transfer the matrix files and hdf5 file to your computer. (However, we will be using data from the full datasets for all three samples instead of this subset).
 
-In the intereste of time, the dataset we use for this step is a small subset of the original data. The cellranger summary file is [here](fullset_web_summary.html)
-
-
-### Bonus: cellranger features and multi pipeline
-
-Feature barcodes allow you to capture additional information within your cells by using an addition oligo on the GEM beads. This can be from Antibody capture, Crispr guide capture, or a custom capture (like hash tagging).
-
-To do so you need to pass a library csv file and a feature (only 1 feature possible at a time) reference file.
-
-    ```
-    cellranger count --id=sample \
-                     --libraries=library.csv \
-                     --transcriptome=/opt/refdata-gex-GRCh38-2020-A \
-                     --feature-ref=feature_ref.csv \
-                     --expect-cells=1000
-   ```
-
-#### Library csv file
-
-3 columns
-
-* fastq - path to fastq files
-* sample - name of the fastq file
-* library_type one of Gene Expression, Custom, Antibody Capture, or CRISPR Guide Capture
-
-
-```
-fastqs,sample,library_type
-/opt/foo/,GEX_sample1,Gene Expression
-/opt/foo/,CRISPR_sample1,CRISPR Guide Capture
-```
-
-#### Feature Reference file
-
-* id - Unique ID
-* name - Human-readable name
-* read - Which read do I expect to find the feature barcode in
-* pattern - The pattern within the read
-* sequence - The barcode sequence
-* feature_type - Type of feature, same as above
-
-```
-id,name,read,pattern,sequence,feature_type
-CD3,CD3_TotalC,R2,^NNNNNNNNNN(BC)NNNNNNNNN,CTCATTGTAACTCCT,Antibody Capture
-CD19,CD19_TotalC,R2,^NNNNNNNNNN(BC)NNNNNNNNN,CTGGGCAATTACTCG,Antibody Capture
-CD45RA,CD45RA_TotalC,R2,^NNNNNNNNNN(BC)NNNNNNNNN,TCAATCCTTCCGCTT,Antibody Capture
-CD4,CD4_TotalC,R2,^NNNNNNNNNN(BC)NNNNNNNNN,TGTTCCCGCTCAACT,Antibody Capture
-CD8a,CD8a_TotalC,R2,^NNNNNNNNNN(BC)NNNNNNNNN,GCTGCGCTTTCCATT,Antibody Capture
-```
-
-See [Feature Barcode Analysis](https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/using/feature-bc-analysis#feature-types) for more information.
-
-#### Cellranger multi
-
-Cell Ranger 6.0 introduced the multi pipeline which is required for use with CellPlex, and can can be used to 'join' features, V(D)J, and counts into a single analysis.
-
-cellranger multi requires an ID for output and a configuration csv (which really isn't a csv).
-
-##### Multi Config CSV
-
-Section: [gene-expression]
-
-| Field |	Description |
-|:---- |:--- |
-| reference	| Path of folder containing 10x-compatible reference. Required for gene expression and Feature Barcode libraries. |
-|cmo-set	| Optional. CMO set CSV file, declaring CMO constructs and associated barcodes.|
-| target-panel |	Optional. Path to a target panel CSV file or name of a 10x Genomics fixed gene panel (pathway, pan-cancer, immunology, neuroscience). |
-|no-target-umi-filter |	Optional. Disable targeted UMI filtering stage. Default: false. |
-| r1-length | Optional. Hard trim the input Read 1 of gene expression libraries to this length before analysis. Default: do not trim Read 1. |
-| r2-length |	Optional. Hard trim the input Read 2 of gene expression libraries to this length before analysis. Default: do not trim Read 2. |
-| chemistry |	Optional. Assay configuration. NOTE: by default, the assay configuration is detected automatically, which is the recommended mode. Users usually will not need to specify a chemistry. Options are: 'auto' for autodetection, 'threeprime' for Single Cell 3', 'fiveprime' for Single Cell 5', 'SC3Pv1' or 'SC3Pv2' or 'SC3Pv3' for Single Cell 3' v1/v2/v3, 'SC5P-PE' or 'SC5P-R2' for Single Cell 5', paired-end/R2-only, 'SC-FB' for Single Cell Antibody-only 3' v2 or 5'. Default: auto. |
-| expect-cells |	Optional. Expected number of recovered cells. Default: 3000. |
-| force-cells	| Optional. Force pipeline to use this number of cells, bypassing cell detection. Default: detect cells using EmptyDrops. |
-| include-introns	| Optional. Include intronic reads in count. Default: false |
-| no-secondary |	Optional. Disable secondary analysis, e.g. clustering. Default: false. |
-| no-bam |	Optional. Do not generate a bam file. Default: false. |
-
-
-Section: [feature]
-
-| Field |	Description |
-|:---- |:--- |
-| reference |	Feature reference CSV file, declaring Feature Barcode constructs and associated barcodes. Required for Feature Barcode libraries, otherwise optional. |
-| r1-length	| Optional. Hard trim the input Read 1 of Feature Barcode libraries to this length before analysis. Default: do not trim Read 1. |
-| r2-length	| Optional. Hard trim the input Read 2 of Feature Barcode libraries to this length before analysis. Default: do not trim Read 2. |
-
-Section: [libraries] (see also Specifying Input FASTQ Files for cellranger multi)
-
-| Column |	Description |
-|:---- |:--- |
-| fastq_id	| Required. The Illumina sample name to analyze. This will be as specified in the sample sheet supplied to mkfastq or bcl2fastq. |
-| fastqs |	Required. The folder containing the FASTQ files to be analyzed. Generally, this will be the fastq_path folder generated by cellranger mkfastq. |
-| lanes |	Optional. The lanes associated with this sample, separated by. Defaults to using all lanes. |
-| feature_types |	Required. The underlying feature type of the library, which must be one of ‘Gene Expression’ (3' and 5'), ‘VDJ’ (5' only), ‘VDJ-T’ (5' only), ‘VDJ-B’ (5' only), ‘Antibody Capture’ (3' and 5'), ‘CRISPR Guide Capture’ (3' only), or ‘Multiplexing Capture’ (3' only). |
-| subsample_rate | Optional. The rate at which reads from the provided FASTQ files are sampled. Must be strictly greater than 0 and less than or equal to 1. |
-
-Section: [samples]
-
-| Column |	Description |
-|:---- |:--- |
-|sample_id	| A name to identify a multiplexed sample. Must be alphanumeric with hyphens and/or underscores, and less than 64 characters. Required for cell multiplexing libraries. |
-| cmo_ids |	The cell multiplexing oligo IDs used to multiplex this sample, separated by. Required for cell multiplexing libraries. |
-| description |	Optional. A description for the sample. |
-
-
-
----
+In the interest of time, the dataset we use for this step is a small subset of the original data. The cellranger summary file is [here](fullset_web_summary.html)
