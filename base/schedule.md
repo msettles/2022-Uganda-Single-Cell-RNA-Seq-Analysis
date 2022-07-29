@@ -60,4 +60,12 @@ Combined Part 6 and Part 7 [Youtube Video](https://youtu.be/CByXfECUpvE)
 
 ### Friday, July 22
 
-Single Cell Raw Data Processing, 
+Single Cell Raw Data Processing, [Youtube Video](https://youtu.be/HH5-DC0_Byc)
+
+1. Review intro to CLI if needed.
+
+1. perform the project setup under data reduction.
+
+1. Read the "Generating Expression Matrix"
+
+1. (OPTIONAL) if you have access to linux and are so inclined generate counts tables using cellrange.

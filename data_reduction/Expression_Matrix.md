@@ -341,7 +341,7 @@ curl -O https://cf.10xgenomics.com/supp/cell-exp/refdata-gex-GRCh38-2020-A.tar.g
 ```
 
 
-1. Log into tadpole with the username/password
+1. change directory into the scrnaseq_example folder
 
     ```bash
     cd ~/scrnaseq_example
@@ -350,17 +350,14 @@ curl -O https://cf.10xgenomics.com/supp/cell-exp/refdata-gex-GRCh38-2020-A.tar.g
 
 1. Run Cellranger on each sample.
 
-    ```bash
+    ```bash  
+
     cd ~/scrnaseq_example
 
 		## Set the parameters for the run
 		basedir="~/scrnaseq_example"
 		transcriptome=[PATH TO]/refdata-gex-GRCh38-2020-A
 		fastqs="${basedir}/00-RawData"
-
-
-		## provide the script the row # of the sample to be run
-		sample=`sed "${SLURM_ARRAY_TASK_ID}q;d" samples.txt`
 
 		## https://support.10xgenomics.com/single-cell-gene-expression/software/overview/welcome
 		## Create the call
